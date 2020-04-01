@@ -1,11 +1,8 @@
-from headers import *
-
 import torch
 import torch.nn as nn
 import numpy as np
 from ...spinningup.spinup.exercises.pytorch.problem_set_1 import exercise1_1
 from ...spinningup.spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
-
 
 """
 
