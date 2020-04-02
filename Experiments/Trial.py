@@ -1,6 +1,4 @@
-import torch
-import torch.nn as nn
-import numpy as np
+import torch, torch.nn as nn, numpy as np, sys
 sys.path.append("~/Research/Code/spinningup")
 from spinup.exercises.pytorch.problem_set_1 import exercise1_1
 from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
