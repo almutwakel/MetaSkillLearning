@@ -1,6 +1,5 @@
-import torch, torch.nn as nn, numpy as np, sys
+from headers import *
 sys.path.append("/private/home/tanmayshankar/Research/Code/spinningup")
-from IPython import embed
 from spinup.exercises.pytorch.problem_set_1 import exercise1_1
 from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
 from spinup.utils.run_utils import ExperimentGrid
