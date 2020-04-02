@@ -2,6 +2,7 @@
 import numpy as np
 import glob, os, sys, argparse
 import torch, copy
+from torch import nn
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, utils
 from IPython import embed

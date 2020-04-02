@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from headers import *
 
-def mlp(sizes, activation, output_activation=nn.Identity):
+def mlp(sizes, activation, output_activation=torch.nn.Identity):
     """
     Build a multi-layer perceptron in PyTorch.
 
