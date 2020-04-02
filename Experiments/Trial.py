@@ -1,8 +1,9 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from ...spinningup.spinup.exercises.pytorch.problem_set_1 import exercise1_1
-from ...spinningup.spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
+sys.path.append("~/Research/Code/spinningup")
+from spinup.exercises.pytorch.problem_set_1 import exercise1_1
+from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
 
 """
 
@@ -75,8 +76,8 @@ if __name__ == '__main__':
     Run this file to verify your solution.
     """
 
-    from ...spinningup.spinup import ppo_pytorch as ppo
-    from ...spinningup.spinup.exercises.common import print_result
+    from spinup import ppo_pytorch as ppo
+    from spinup.exercises.common import print_result
     from functools import partial
     import gym
     import os
