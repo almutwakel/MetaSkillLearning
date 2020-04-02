@@ -1,5 +1,6 @@
 import torch, torch.nn as nn, numpy as np, sys
 sys.path.append("~/Research/Code/spinningup")
+# sys.path.append("/private/home/tanmayshankar/Research/Code/spinningup")
 from spinup.exercises.pytorch.problem_set_1 import exercise1_1
 from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
 
