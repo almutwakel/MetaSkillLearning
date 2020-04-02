@@ -1,9 +1,9 @@
 import torch, torch.nn as nn, numpy as np, sys
-# sys.path.append("~/Research/Code/spinningup")
 sys.path.append("/private/home/tanmayshankar/Research/Code/spinningup")
 from IPython import embed
 from spinup.exercises.pytorch.problem_set_1 import exercise1_1
 from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
+from spinup.utils.run_utils import ExperimentGrid
 
 """
 
@@ -100,21 +100,26 @@ if __name__ == '__main__':
         ac_kwargs=dict(hidden_sizes=(64,)),
         steps_per_epoch=4000, epochs=100, logger_kwargs=dict(output_dir=logdir))
 
-    ppo(env_fn = lambda : gym_env,
-        actor_critic=ActorCritic,
-        ac_kwargs=dict(hidden_sizes=(64,)),
-        steps_per_epoch=4000, epochs=20, logger_kwargs=dict(output_dir=logdir))
-
-    # ppo(env_fn = lambda : gym.make('InvertedPendulum-v2'),
-    #     actor_critic=ActorCritic,
-    #     ac_kwargs=dict(hidden_sizes=(64,)),
-    #     steps_per_epoch=4000, epochs=20, logger_kwargs=dict(output_dir=logdir))
-
     # Get scores from last five epochs to evaluate success.
     data = pd.read_table(os.path.join(logdir,'progress.txt'))
     last_scores = data['AverageEpRet'][-5:]
 
-    # Your implementation is probably correct if the agent has a score >500,
-    # or if it reaches the top possible score of 1000, in the last five epochs.
-    correct = np.mean(last_scores) > 500 or np.max(last_scores)==1e3
-    print_result(correct)
+    print_result(last_scores)
+
+    # ##########################################
+    # # Code from Spinning up examples that uses the experiment grid function to create sweep.
+    # ##########################################
+
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('--cpu', type=int, default=4)
+    # parser.add_argument('--num_runs', type=int, default=3)
+    # args = parser.parse_args()
+
+    # eg = ExperimentGrid(name='ppo-pyt-bench')
+    # eg.add('env_name', 'CartPole-v0', '', True)
+    # eg.add('seed', [10*i for i in range(args.num_runs)])
+    # eg.add('epochs', 10)
+    # eg.add('steps_per_epoch', 4000)
+    # eg.add('ac_kwargs:hidden_sizes', [(32,), (64,64)], 'hid')
+    # eg.add('ac_kwargs:activation', [torch.nn.Tanh, torch.nn.ReLU], '')
+    # eg.run(ppo_pytorch, num_cpu=args.cpu)
