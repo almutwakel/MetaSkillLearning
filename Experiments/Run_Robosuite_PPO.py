@@ -21,8 +21,9 @@ if __name__ == '__main__':
     """
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--env', dest='env_name', type=str, default='SawyerLift', help='Specify the environment name of the Robosuite environment to run PPO On.')
-    parser.add_argument('--run_name', dest='run_name', type=str, help='Set the name of the run.')
+    parser.add_argument('--env', dest='env_name', type=str, default='SawyerLift',                   help='Specify the environment name of the Robosuite environment to run PPO On.')
+    parser.add_argument('--run_name', dest='run_name', type=str,                                    help='Set the name of the run.')
+    parser.add_argument('--train', dest='train', default=True, action='store_true',                 help='Whether to train or evaluate.')
     args = parser.parse_args()
 
     # Remember, the environment names need to be from here. 
@@ -42,15 +43,17 @@ if __name__ == '__main__':
     # Create a policy / critic. 
     ActorCritic = partial(exercise1_2_auxiliary.ExerciseActorCritic, actor=MLPGaussianActor)
 
-    # Actually call PPO.
-    ppo(env_fn = lambda : gym_env,
-        actor_critic=ActorCritic,
-        ac_kwargs=dict(hidden_sizes=(64,)),
-        steps_per_epoch=4000, epochs=100, logger_kwargs=dict(output_dir=logdir))
+    if args.train:
+        # Actually call PPO.
+        ppo(env_fn = lambda : gym_env,
+            actor_critic=ActorCritic,
+            ac_kwargs=dict(hidden_sizes=(64,)),
+            steps_per_epoch=4000, epochs=100, logger_kwargs=dict(output_dir=logdir))
 
-    # Get scores from last five epochs to evaluate success.
-    data = pd.read_table(os.path.join(logdir,'progress.txt'))
-    last_scores = data['AverageEpRet'][-5:]
+        # Get scores from last five epochs to evaluate success.
+        data = pd.read_table(os.path.join(logdir,'progress.txt'))
+        last_scores = data['AverageEpRet'][-5:]
 
-    print("####################")
-    print_result(last_scores)
+        print("####################")
+        # print_result(last_scores)
+        print(last_scores)
