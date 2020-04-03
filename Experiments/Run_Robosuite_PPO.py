@@ -14,6 +14,26 @@ from robosuite.wrappers import GymWrapper
 This file runs the OpenAI Spinning Up PPO baseline on all of the Robosuite environments. 
 """
 
+def run_experiment(args): 
+
+    # Taken from: https://gist.github.com/krishpop/f4b2aa8d60d7b22bce8c258fd68ab11c
+
+    def env_fn():
+        import envs  # registers custom envs to gym env registry
+        return gym.make(args.env_name)
+
+    
+
+    eg = ExperimentGrid(name=args.exp_name)
+    eg.add('env_fn', env_fn)
+    # eg.add('seed', [10*i for i in range(args.num_runs)])
+    # eg.add('epochs', 500)
+    # eg.add('steps_per_epoch', 10000)
+    # eg.add('save_freq', 20)
+    # eg.add('max_ep_len', 200)
+    # eg.add('ac_kwargs:activation', tf.tanh, '')
+    eg.run(ddpg)
+
 if __name__ == '__main__':
     """
     Run this file to verify your solution.
