@@ -38,10 +38,10 @@ if __name__ == '__main__':
     # environment_names = ["SawyerPickPlaceBread","SawyerPickPlaceCan","SawyerPickPlaceCereal","SawyerPickPlace","SawyerPickPlaceMilk","SawyerNutAssembly", "SawyerNutAssemblyRound","SawyerNutAssemblySquare"]
 
     # First make the robosuite environment. 
-    if args.train:
-        base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
-    else:
-        base_env = robosuite.make(args.env_name, has_renderer=True, use_camera_obs=False, reward_shaping=True)
+    # if args.train:
+    base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
+    # else:
+    #     base_env = robosuite.make(args.env_name, has_renderer=True, use_camera_obs=False, reward_shaping=True)
 
     # Now make a GymWrapped version of that environment.
     gym_env = GymWrapper(base_env)
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         # Now run the policy.
         run_policy(gym_env, policy)
 
-        
+
 
 
 
