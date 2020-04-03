@@ -79,7 +79,7 @@ if __name__ == '__main__':
             _ , policy = load_policy_and_env(args.model)
 
         # Now run the policy.
-        run_policy(gym_env, policy)
+        run_policy(gym_env, policy, render=False)
 
 
 
