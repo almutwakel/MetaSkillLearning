@@ -44,6 +44,7 @@ if __name__ == '__main__':
     ActorCritic = partial(exercise1_2_auxiliary.ExerciseActorCritic, actor=MLPGaussianActor)
 
     if args.train:
+        print("Beginning Training.")
         # Actually call PPO.
         ppo(env_fn = lambda : gym_env,
             actor_critic=ActorCritic,
@@ -57,3 +58,5 @@ if __name__ == '__main__':
         print("####################")
         # print_result(last_scores)
         print(last_scores)
+    else: 
+        print("Evaluating, not training.")
