@@ -10,6 +10,7 @@ from functools import partial
 import gym, os, pandas as pd, psutil, time
 import robosuite
 from robosuite.wrappers import GymWrapper
+from spinup.utils.test_policy import load_policy_and_env, run_policy 
 
 """
 This file runs the OpenAI Spinning Up PPO baseline on all of the Robosuite environments. 
@@ -28,6 +29,7 @@ if __name__ == '__main__':
     feature_parser.add_argument('--train', dest='train', action='store_true')
     feature_parser.add_argument('--no-train', dest='train', action='store_false')
     parser.set_defaults(train=True)
+    parser.add_argument('--model', dest='model', type=str,                                          help='Model to load.')
 
     args = parser.parse_args()
 
@@ -36,7 +38,11 @@ if __name__ == '__main__':
     # environment_names = ["SawyerPickPlaceBread","SawyerPickPlaceCan","SawyerPickPlaceCereal","SawyerPickPlace","SawyerPickPlaceMilk","SawyerNutAssembly", "SawyerNutAssemblyRound","SawyerNutAssemblySquare"]
 
     # First make the robosuite environment. 
-    base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
+    if args.train:
+        base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
+    else:
+        base_env = robosuite.make(args.env_name, has_renderer=True, use_camera_obs=False, reward_shaping=True)
+
     # Now make a GymWrapped version of that environment.
     gym_env = GymWrapper(base_env)
 
@@ -65,3 +71,19 @@ if __name__ == '__main__':
         print(last_scores)
     else: 
         print("Evaluating, not training.")
+
+        # Load model while evaluating. 
+        if args.model is None: 
+            _ , policy = load_policy_and_env(logdir)
+        else:
+            _ , policy = load_policy_and_env(args.model)
+
+        # Now run the policy.
+        run_policy(gym_env, policy)
+
+        
+
+
+
+
+
