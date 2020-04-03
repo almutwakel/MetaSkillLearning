@@ -36,7 +36,8 @@ if __name__ == '__main__':
 
     # Create a log directory.
     # logdir = "/tmp/experiments/%i"%int(time.time())
-    logdir = "/tmp/experiments/{0}".format(args.env_name+"_"+args.run_name)
+    # logdir = "/tmp/experiments/{0}".format(args.env_name+"_"+args.run_name)
+    logdir = "Logs/{0}".format(args.env_name+"_"+args.run_name)
 
     # Create a policy / critic. 
     ActorCritic = partial(exercise1_2_auxiliary.ExerciseActorCritic, actor=MLPGaussianActor)
