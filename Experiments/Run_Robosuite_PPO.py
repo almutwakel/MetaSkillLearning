@@ -7,32 +7,37 @@ from PolicyNetworks import mlp, MLPGaussianActor
 from spinup import ppo_pytorch as ppo
 from spinup.exercises.common import print_result
 from functools import partial
-import gym, os, pandas as pd, psutil, time, robosuite
+import gym, os, pandas as pd, psutil, time
+import robosuite
 from robosuite.wrappers import GymWrapper
 
 """
 This file runs the OpenAI Spinning Up PPO baseline on all of the Robosuite environments. 
 """
 
-def run_experiment(args): 
+# def run_experiment(args): 
 
-    # Taken from: https://gist.github.com/krishpop/f4b2aa8d60d7b22bce8c258fd68ab11c
+#     # Taken from: https://gist.github.com/krishpop/f4b2aa8d60d7b22bce8c258fd68ab11c
 
-    def env_fn():
-        import envs  # registers custom envs to gym env registry
-        return gym.make(args.env_name)
+#     def env_fn():
+#         # import envs  # registers custom envs to gym env registry
+#         import robosuite # This should handle registration, if it wasn't already done. 
+#         from robosuite.wrappers import GymWrapper        
 
-    
+#         # First make the robosuite environment. 
+#         base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
+#         # Now make a GymWrapped version of that environment.
+#         gym_env = GymWrapper(base_env)
 
-    eg = ExperimentGrid(name=args.exp_name)
-    eg.add('env_fn', env_fn)
-    # eg.add('seed', [10*i for i in range(args.num_runs)])
-    # eg.add('epochs', 500)
-    # eg.add('steps_per_epoch', 10000)
-    # eg.add('save_freq', 20)
-    # eg.add('max_ep_len', 200)
-    # eg.add('ac_kwargs:activation', tf.tanh, '')
-    eg.run(ddpg)
+#     eg = ExperimentGrid(name=args.exp_name)
+#     eg.add('env_fn', env_fn)
+#     # eg.add('seed', [10*i for i in range(args.num_runs)])
+#     # eg.add('epochs', 500)
+#     # eg.add('steps_per_epoch', 10000)
+#     # eg.add('save_freq', 20)
+#     # eg.add('max_ep_len', 200)
+#     # eg.add('ac_kwargs:activation', tf.tanh, '')
+#     eg.run(ddpg)
 
 if __name__ == '__main__':
     """
@@ -70,4 +75,5 @@ if __name__ == '__main__':
     data = pd.read_table(os.path.join(logdir,'progress.txt'))
     last_scores = data['AverageEpRet'][-5:]
 
+    print("####################")
     print_result(last_scores)
