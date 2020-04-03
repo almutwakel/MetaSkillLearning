@@ -23,7 +23,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--env', dest='env_name', type=str, default='SawyerLift',                   help='Specify the environment name of the Robosuite environment to run PPO On.')
     parser.add_argument('--run_name', dest='run_name', type=str,                                    help='Set the name of the run.')
-    parser.add_argument('--train', dest='train', default=True, action='store_true',                 help='Whether to train or evaluate.')
+    # parser.add_argument('--train', dest='train', default=True, action='store_true',                 help='Whether to train or evaluate.')
+    feature_parser = parser.add_mutually_exclusive_group(required=False)
+    feature_parser.add_argument('--train', dest='train', action='store_true')
+    feature_parser.add_argument('--no-train', dest='train', action='store_false')
+    parser.set_defaults(train=True)
+
     args = parser.parse_args()
 
     # Remember, the environment names need to be from here. 
