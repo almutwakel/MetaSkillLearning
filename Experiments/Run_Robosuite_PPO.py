@@ -88,7 +88,7 @@ if __name__ == '__main__':
         else:
             _ , policy = load_policy_and_env(args.model)
 
-        if render: 
+        if args.render: 
             # Render an episode of the policy. 
             episode_gif = render_episode(gym_env, policy)
             path = os.path.join(logdir, "Images")
@@ -97,6 +97,6 @@ if __name__ == '__main__':
 
             imageio.mimsave(os.path.join(path,"Trained_Rollout"), episode_gif)
 
-        if evaluate:
+        if args.evaluate:
             # Now run the policy.
             run_policy(gym_env, policy, render=False)
