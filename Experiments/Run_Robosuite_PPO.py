@@ -10,7 +10,8 @@ from functools import partial
 import gym, os, pandas as pd, psutil, time
 import robosuite
 from robosuite.wrappers import GymWrapper
-from spinup.utils.test_policy import load_policy_and_env, run_policy 
+from spinup.utils.test_policy import load_policy_and_env, run_policy, render_episode
+import imageio 
 
 """
 This file runs the OpenAI Spinning Up PPO baseline on all of the Robosuite environments. 
@@ -30,6 +31,9 @@ if __name__ == '__main__':
     feature_parser.add_argument('--no-train', dest='train', action='store_false')
     parser.set_defaults(train=True)
     parser.add_argument('--model', dest='model', type=str,                                          help='Model to load.')
+
+    parser.add_argument('--render', dest='render', type=int, default=1,                             help='Whether to render an episode.')
+    parser.add_argument('--eval', dest='train', type=int, default=1,                                help='Whether to evaluate.')
 
     args = parser.parse_args()
 
@@ -73,6 +77,8 @@ if __name__ == '__main__':
         # Now run the policy.
         run_policy(gym_env, policy, render=False)
 
+        # sim.render(600,600, camera_name='frontview')
+
     else: 
         print("Evaluating, not training.")
 
@@ -82,12 +88,15 @@ if __name__ == '__main__':
         else:
             _ , policy = load_policy_and_env(args.model)
 
-        # Now run the policy.
-        run_policy(gym_env, policy, render=False)
+        if render: 
+            # Render an episode of the policy. 
+            episode_gif = render_episode(gym_env, policy)
+            path = os.path.join(logdir, "Images")
+            if not(os.path.isdir(path)):
+                os.mkdir(path)
 
+            imageio.mimsave(os.path.join(path,"Trained_Rollout"), episode_gif)
 
-
-
-
-
-
+        if evaluate:
+            # Now run the policy.
+            run_policy(gym_env, policy, render=False)
