@@ -95,7 +95,9 @@ if __name__ == '__main__':
             if not(os.path.isdir(path)):
                 os.mkdir(path)
 
-            imageio.mimsave(os.path.join(path,"Trained_Rollout"), episode_gif)
+            embed()
+
+            imageio.mimsave(os.path.join(path,"Trained_Rollout.gif"), episode_gif)
 
         if args.evaluate:
             # Now run the policy.
