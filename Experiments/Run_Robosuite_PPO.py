@@ -66,9 +66,13 @@ if __name__ == '__main__':
         data = pd.read_table(os.path.join(logdir,'progress.txt'))
         last_scores = data['AverageEpRet'][-5:]
 
-        print("####################")
-        # print_result(last_scores)
-        print(last_scores)
+        # Now evaluate last model over 100 episodes. 
+        # Load model while evaluating. 
+        _ , policy = load_policy_and_env(logdir)
+
+        # Now run the policy.
+        run_policy(gym_env, policy, render=False)
+
     else: 
         print("Evaluating, not training.")
 
