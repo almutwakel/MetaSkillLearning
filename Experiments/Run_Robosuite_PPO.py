@@ -33,7 +33,7 @@ if __name__ == '__main__':
     parser.add_argument('--model', dest='model', type=str,                                          help='Model to load.')
 
     parser.add_argument('--render', dest='render', type=int, default=1,                             help='Whether to render an episode.')
-    parser.add_argument('--eval', dest='train', type=int, default=1,                                help='Whether to evaluate.')
+    parser.add_argument('--evaluate', dest='evaluate', type=int, default=1,                                help='Whether to evaluate.')
 
     args = parser.parse_args()
 
