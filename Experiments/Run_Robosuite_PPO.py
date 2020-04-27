@@ -5,6 +5,7 @@ from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
 from spinup.utils.run_utils import ExperimentGrid
 from PolicyNetworks import mlp, MLPGaussianActor
 from spinup import ppo_pytorch as ppo
+from spinup.algos.pytorch.ppo.hierarchical_ppo import hierarchical_ppo
 from spinup.exercises.common import print_result
 from functools import partial
 import gym, os, pandas as pd, psutil, time
@@ -33,7 +34,9 @@ if __name__ == '__main__':
     parser.add_argument('--model', dest='model', type=str,                                          help='Model to load.')
 
     parser.add_argument('--render', dest='render', type=int, default=1,                             help='Whether to render an episode.')
-    parser.add_argument('--evaluate', dest='evaluate', type=int, default=1,                                help='Whether to evaluate.')
+    parser.add_argument('--evaluate', dest='evaluate', type=int, default=1,                         help='Whether to evaluate.')
+    parser.add_argument('--hierarchical', dest='hierarchical', type=int, default=0,                 help='Whether to run Hierarchical PPO or Flat PPO.')
+
 
     args = parser.parse_args()
 
@@ -61,10 +64,17 @@ if __name__ == '__main__':
     if args.train:
         print("Beginning Training.")
         # Actually call PPO.
-        ppo(env_fn = lambda : gym_env,
-            actor_critic=ActorCritic,
-            ac_kwargs=dict(hidden_sizes=(64,)),
-            steps_per_epoch=4000, epochs=100, logger_kwargs=dict(output_dir=logdir))
+
+        if args.hierarchical:
+            hierarchical_ppo(lambda : gym_env, 
+            ac_kwargs=dict(hidden_sizes=(64,)), 
+            steps_per_epoch=4000, epochs=100,
+            logger_kwargs=dict(output_dir=logdir))
+        else:
+            ppo(env_fn = lambda : gym_env,
+                actor_critic=ActorCritic,
+                ac_kwargs=dict(hidden_sizes=(64,)),
+                steps_per_epoch=4000, epochs=100, logger_kwargs=dict(output_dir=logdir))
 
         # Get scores from last five epochs to evaluate success.
         data = pd.read_table(os.path.join(logdir,'progress.txt'))
@@ -94,8 +104,6 @@ if __name__ == '__main__':
             path = os.path.join(logdir, "Images")
             if not(os.path.isdir(path)):
                 os.mkdir(path)
-
-            embed()
 
             imageio.mimsave(os.path.join(path,"Trained_Rollout.gif"), episode_gif)
 
