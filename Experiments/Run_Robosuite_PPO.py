@@ -96,7 +96,7 @@ if __name__ == '__main__':
         else:
             _ , policy = load_policy_and_env(args.model)
 
-        embed()
+        
 
         if args.render: 
             # Render an episode of the policy. 
