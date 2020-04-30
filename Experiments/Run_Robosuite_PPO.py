@@ -85,9 +85,7 @@ if __name__ == '__main__':
         _ , policy = load_policy_and_env(logdir)
 
         # Now run the policy.
-        run_policy(gym_env, policy, render=False)
-
-        # sim.render(600,600, camera_name='frontview')
+        run_policy(gym_env, policy, render=False, hierarchical=args.hierarchical)
 
     else: 
         print("Evaluating, not training.")
@@ -98,9 +96,11 @@ if __name__ == '__main__':
         else:
             _ , policy = load_policy_and_env(args.model)
 
+        embed()
+
         if args.render: 
             # Render an episode of the policy. 
-            episode_gif = render_episode(gym_env, policy)
+            episode_gif = render_episode(gym_env, policy, hierarchical=args.hierarchical)
             path = os.path.join(logdir, "Images")
             if not(os.path.isdir(path)):
                 os.mkdir(path)
@@ -109,4 +109,4 @@ if __name__ == '__main__':
 
         if args.evaluate:
             # Now run the policy.
-            run_policy(gym_env, policy, render=False)
+            run_policy(gym_env, policy, render=False, hierarchical=args.hierarchical)
