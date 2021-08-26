@@ -1,5 +1,5 @@
 from headers import *
-sys.path.append("/private/home/tanmayshankar/Research/Code/spinningup")
+# sys.path.append("/private/home/tanmayshankar/Research/Code/spinningup")
 from spinup.exercises.pytorch.problem_set_1 import exercise1_1
 from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
 from spinup.utils.run_utils import ExperimentGrid
@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
     # Create a policy / critic. 
     ActorCritic = partial(exercise1_2_auxiliary.ExerciseActorCritic, actor=MLPGaussianActor)
-
+    print("We reached train")
     if args.train:
         print("Beginning Training.")
         # Actually call PPO.
