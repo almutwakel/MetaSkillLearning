@@ -95,8 +95,7 @@ if __name__ == '__main__':
             _ , policy = load_policy_and_env(logdir)
         else:
             _ , policy = load_policy_and_env(args.model)
-
-        
+    
 
         if args.render: 
             # Render an episode of the policy. 
