@@ -25,7 +25,7 @@ import sklearn.manifold as skl_manifold
 from matplotlib.offsetbox import (TextArea, DrawingArea, OffsetImage,
                                   AnnotationBbox)
 from matplotlib.animation import FuncAnimation
-import tensorflow as tf
+# import tensorflow as tf
 import tempfile
 import moviepy.editor as mpy
 import subprocess
