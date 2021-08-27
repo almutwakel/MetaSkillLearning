@@ -116,3 +116,44 @@ python cluster_run.py --partition=learnfair --name=HRL010 --cmd='python Run_Robo
 python cluster_run.py --partition=learnfair --name=HRL011 --cmd='python Run_Robosuite_PPO.py --run_name="HRL012" --hierarchical=1 --env="SawyerNutAssemblyRound"'
 
 python cluster_run.py --partition=learnfair --name=HRL012 --cmd='python Run_Robosuite_PPO.py --run_name="HRL013" --hierarchical=1 --env="SawyerNutAssemblySquare"'
+
+#####################################################
+
+
+# Running Hierarchical PPO on all environments. 
+# trial 
+python Run_Robosuite_PPO.py --run_name="trial" --hierarchical=1 --env="SawyerLift"
+
+python Run_Robosuite_PPO.py --run_name="HRL001" --hierarchical=1 --env="SawyerLift"
+
+python Run_Robosuite_PPO.py --run_name="HRL002" --hierarchical=1 --env="SawyerStack"
+
+python Run_Robosuite_PPO.py --run_name="HRL003" --hierarchical=1 --env="SawyerPickPlace"
+
+# 
+# Run without hierarchy for comparison
+python Run_Robosuite_PPO.py --run_name="RL001" --hierarchical=0 --env="SawyerLift"
+
+python Run_Robosuite_PPO.py --run_name="RL002" --hierarchical=0 --env="SawyerStack"
+
+python Run_Robosuite_PPO.py --run_name="RL003" --hierarchical=0 --env="SawyerPickPlace"
+
+# 
+
+python Run_Robosuite_PPO.py --run_name="HRL004" --hierarchical=1 --env="SawyerNutAssembly"
+
+python Run_Robosuite_PPO.py --run_name="HRL005" --hierarchical=1 --env="BaxterLift"
+
+python Run_Robosuite_PPO.py --run_name="HRL006" --hierarchical=1 --env="BaxterPegInHole"
+
+python Run_Robosuite_PPO.py --run_name="HRL007" --hierarchical=1 --env="SawyerPickPlaceBread"
+
+python Run_Robosuite_PPO.py --run_name="HRL008" --hierarchical=1 --env="SawyerPickPlaceCan"
+
+python Run_Robosuite_PPO.py --run_name="HRL009" --hierarchical=1 --env="SawyerPickPlaceCereal"
+
+python Run_Robosuite_PPO.py --run_name="HRL010" --hierarchical=1 --env="SawyerPickPlaceMilk"
+
+python Run_Robosuite_PPO.py --run_name="HRL012" --hierarchical=1 --env="SawyerNutAssemblyRound"
+
+python Run_Robosuite_PPO.py --run_name="HRL013" --hierarchical=1 --env="SawyerNutAssemblySquare"

@@ -37,7 +37,6 @@ if __name__ == '__main__':
     parser.add_argument('--evaluate', dest='evaluate', type=int, default=1,                         help='Whether to evaluate.')
     parser.add_argument('--hierarchical', dest='hierarchical', type=int, default=0,                 help='Whether to run Hierarchical PPO or Flat PPO.')
 
-
     args = parser.parse_args()
 
     # Remember, the environment names need to be from here. 
