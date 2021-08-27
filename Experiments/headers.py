@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-import numpy as np
+import tensorflow as tf
 import glob, os, sys, argparse
 import torch, copy
 from torch import nn
@@ -25,7 +24,8 @@ import sklearn.manifold as skl_manifold
 from matplotlib.offsetbox import (TextArea, DrawingArea, OffsetImage,
                                   AnnotationBbox)
 from matplotlib.animation import FuncAnimation
-# import tensorflow as tf
+
+import numpy as np
 import tempfile
 import moviepy.editor as mpy
 import subprocess
