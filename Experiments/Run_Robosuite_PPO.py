@@ -5,7 +5,8 @@ from spinup.exercises.pytorch.problem_set_1 import exercise1_2_auxiliary
 from spinup.utils.run_utils import ExperimentGrid
 from PolicyNetworks import mlp, MLPGaussianActor
 from spinup import ppo_pytorch as ppo
-from spinup.algos.pytorch.ppo.hierarchical_ppo import hierarchical_ppo
+# from spinup.algos.pytorch.ppo.hierarchical_ppo import hierarchical_ppo
+from spinup.algos.pytorch.ppo.new_hierarchical_ppo import hierarchical_ppo
 from spinup.exercises.common import print_result
 from functools import partial
 import gym, os, pandas as pd, psutil, time
@@ -37,6 +38,15 @@ if __name__ == '__main__':
     parser.add_argument('--evaluate', dest='evaluate', type=int, default=1,                         help='Whether to evaluate.')
     parser.add_argument('--hierarchical', dest='hierarchical', type=int, default=0,                 help='Whether to run Hierarchical PPO or Flat PPO.')
 
+    ####################################################
+    # Arguments to instantiate low-level policy. 
+    ####################################################
+
+    parser.add_argument('--lowlevel_policy_model', dest='lowlevel_policy_model', type=str, default=None,        help='Policy model file.')
+    parser.add_argument('--data', dest='data', type=str, default=None,                                          help='What data domain to instantiate policy for.')
+
+    # parser.add.
+    
     args = parser.parse_args()
 
     # Remember, the environment names need to be from here. 
@@ -68,7 +78,7 @@ if __name__ == '__main__':
             hierarchical_ppo(lambda : gym_env, 
             ac_kwargs=dict(hidden_sizes=(64,)), 
             steps_per_epoch=4000, epochs=100,
-            logger_kwargs=dict(output_dir=logdir))
+            logger_kwargs=dict(output_dir=logdir), args=args)
         else:
             ppo(env_fn = lambda : gym_env,
                 actor_critic=ActorCritic,
