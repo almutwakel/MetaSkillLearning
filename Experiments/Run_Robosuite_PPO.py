@@ -46,7 +46,14 @@ if __name__ == '__main__':
     parser.add_argument('--data', dest='data', type=str, default=None,                                          help='What data domain to instantiate policy for.')
     parser.add_argument('--basedir', dest='basedir', type=str, default="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/Statistics", help="Base directory to look for statistics files in.")
 
-    # parser.add.
+    ####################################################
+    # PPO arguments
+    ####################################################
+
+    parser.add_argument('--target_kl', dest='target_kl', type=float, default=0.01, help=' Roughly what KL divergence we think is appropriate \
+         between new and old policies after an update. This will get used \
+         for early stopping. (Usually small, 0.01 or 0.05.)')
+    # parser.add_argument('--')
     
     args = parser.parse_args()
 
@@ -79,7 +86,7 @@ if __name__ == '__main__':
             hierarchical_ppo(lambda : gym_env, 
             ac_kwargs=dict(hidden_sizes=(64,)), 
             steps_per_epoch=4000, epochs=100,
-            logger_kwargs=dict(output_dir=logdir), args=args)
+            logger_kwargs=dict(output_dir=logdir), args=args, target_kl=args.target_kl)
         else:
             ppo(env_fn = lambda : gym_env,
                 actor_critic=ActorCritic,

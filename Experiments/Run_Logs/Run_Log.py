@@ -167,3 +167,12 @@ python Run_Robosuite_PPO.py --run_name="trailzz" --hierarchical=0 --env="SawyerN
 # python Run_Robosuite_PPO.py --run_name="trail_with_model" --hierarchical=1 --env="SawyerNutAssembly" --data=Roboturk --lowlevel_policy_model="~/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340"
 
 python Run_Robosuite_PPO.py --run_name="trail_with_model" --hierarchical=1 --env="SawyerNutAssembly" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_001/saved_models/Model_epoch105"
+
+# Actually run on easy tasks
+python Run_Robosuite_PPO.py --run_name="HRL_100" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_001/saved_models/Model_epoch105"
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_101" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_001/saved_models/Model_epoch105"
+
+python Run_Robosuite_PPO.py --run_name="HRL_102" --hierarchical=1 --env="SawyerLift" --data=Roboturk
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_103" --hierarchical=1 --env="SawyerStack" --data=Roboturk
