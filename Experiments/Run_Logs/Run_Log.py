@@ -160,3 +160,10 @@ python Run_Robosuite_PPO.py --run_name="HRL013" --hierarchical=1 --env="SawyerNu
 
 # Trial
 python Run_Robosuite_PPO.py --run_name="trailzz" --hierarchical=1 --env="SawyerNutAssembly" --data=Roboturk
+# 
+python Run_Robosuite_PPO.py --run_name="trailzz" --hierarchical=0 --env="SawyerNutAssembly" --data=Roboturk
+#
+# Trial with model
+# python Run_Robosuite_PPO.py --run_name="trail_with_model" --hierarchical=1 --env="SawyerNutAssembly" --data=Roboturk --lowlevel_policy_model="~/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340"
+
+python Run_Robosuite_PPO.py --run_name="trail_with_model" --hierarchical=1 --env="SawyerNutAssembly" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_001/saved_models/Model_epoch105"
