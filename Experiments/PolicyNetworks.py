@@ -40,6 +40,31 @@ def gaussian_likelihood(x, mu, log_std):
     pre_sum = -0.5 * (((x-mu)/(torch.exp(log_std)+EPS))**2 + 2*log_std + np.log(2*np.pi))
     return pre_sum.sum(axis=-1)
 
+class MLPGaussianActor(nn.Module):
+
+
+    def __init__(self, obs_dim, act_dim, hidden_sizes, activation):
+        super().__init__()
+
+        self.mu_net = mlp([obs_dim] + list(hidden_sizes) + [act_dim], activation)      
+        self.std_net = mlp([obs_dim] + list(hidden_sizes) + [act_dim], activation)
+        self.softplus_activation = torch.nn.Softplus()
+
+    def forward(self, obs, act=None):
+
+        # Create mean and var. 
+        mean = self.mu_net(obs)
+        standard_deviation = self.softplus_activation(self.std_net(obs))
+
+        # Distribution. 
+        dist = torch.distributions.MultivariateNormal(mean, torch.diag_embed(standard_deviation))
+
+        log_prob = None
+        if act is not None:
+            log_prob = dist.log_prob(act)
+
+        return dist, log_prob
+
 
 class PolicyNetwork_BaseClass(torch.nn.Module):
 	
