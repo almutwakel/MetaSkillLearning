@@ -13,6 +13,34 @@ device = torch.device("cuda" if use_cuda else "cpu")
 # if use_cuda:
 # 	torch.cuda.set_device(2)
 
+def mlp(sizes, activation, output_activation=torch.nn.Identity):
+    """
+    Build a multi-layer perceptron in PyTorch.
+
+    Args:
+        sizes: Tuple, list, or other iterable giving the number of units
+            for each layer of the MLP. 
+
+        activation: Activation function for all layers except last.
+
+        output_activation: Activation function for last layer.
+
+    Returns:
+        A PyTorch module that can be called to give the output of the MLP.
+        (Use an nn.Sequential module.)
+
+    """
+    layers = []
+    for j in range(len(sizes)-1):
+        act = activation if j < len(sizes)-2 else output_activation
+        layers += [nn.Linear(sizes[j], sizes[j+1]), act()]
+    return nn.Sequential(*layers)
+
+def gaussian_likelihood(x, mu, log_std):
+    pre_sum = -0.5 * (((x-mu)/(torch.exp(log_std)+EPS))**2 + 2*log_std + np.log(2*np.pi))
+    return pre_sum.sum(axis=-1)
+
+
 class PolicyNetwork_BaseClass(torch.nn.Module):
 	
 	def __init__(self):

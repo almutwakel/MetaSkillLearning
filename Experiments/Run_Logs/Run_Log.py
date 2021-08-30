@@ -157,3 +157,6 @@ python Run_Robosuite_PPO.py --run_name="HRL010" --hierarchical=1 --env="SawyerPi
 python Run_Robosuite_PPO.py --run_name="HRL012" --hierarchical=1 --env="SawyerNutAssemblyRound"
 
 python Run_Robosuite_PPO.py --run_name="HRL013" --hierarchical=1 --env="SawyerNutAssemblySquare"
+
+# Trial
+python Run_Robosuite_PPO.py --run_name="trailzz" --hierarchical=1 --env="SawyerNutAssembly"
