@@ -44,6 +44,7 @@ if __name__ == '__main__':
 
     parser.add_argument('--lowlevel_policy_model', dest='lowlevel_policy_model', type=str, default=None,        help='Policy model file.')
     parser.add_argument('--data', dest='data', type=str, default=None,                                          help='What data domain to instantiate policy for.')
+    parser.add_argument('--basedir', dest='basedir', type=str, defauilt="~/Research/Code/CausalSkillLearning/Experiments/Statistics", help="Base directory to look for statistics files in.")
 
     # parser.add.
     
