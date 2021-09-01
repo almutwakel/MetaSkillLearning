@@ -45,7 +45,7 @@ if __name__ == '__main__':
     parser.add_argument('--lowlevel_policy_model', dest='lowlevel_policy_model', type=str, default=None,        help='Policy model file.')
     parser.add_argument('--data', dest='data', type=str, default=None,                                          help='What data domain to instantiate policy for.')
     parser.add_argument('--basedir', dest='basedir', type=str, default="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/Statistics", help="Base directory to look for statistics files in.")
-    parser.add_argument('--action_scaling', dest='action_scaling', type=float, default=5.,                      help='How much to scale actions by.')
+    parser.add_argument('--action_scaling', dest='action_scaling', type=float, default=1.,                      help='How much to scale actions by.')
 
     ####################################################
     # PPO arguments
@@ -86,13 +86,13 @@ if __name__ == '__main__':
         if args.hierarchical:
             hierarchical_ppo(lambda : gym_env, 
             ac_kwargs=dict(hidden_sizes=(64,)), 
-            steps_per_epoch=4000, epochs=100,
+            steps_per_epoch=1000, epochs=100,
             logger_kwargs=dict(output_dir=logdir), args=args, target_kl=args.target_kl)
         else:
             ppo(env_fn = lambda : gym_env,
                 actor_critic=ActorCritic,
                 ac_kwargs=dict(hidden_sizes=(64,)),
-                steps_per_epoch=4000, epochs=100, logger_kwargs=dict(output_dir=logdir))
+                steps_per_epoch=1000, epochs=100, logger_kwargs=dict(output_dir=logdir))
 
         # Get scores from last five epochs to evaluate success.
         data = pd.read_table(os.path.join(logdir,'progress.txt'))

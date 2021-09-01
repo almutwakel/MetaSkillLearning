@@ -138,8 +138,6 @@ python Run_Robosuite_PPO.py --run_name="RL002" --hierarchical=0 --env="SawyerSta
 
 python Run_Robosuite_PPO.py --run_name="RL003" --hierarchical=0 --env="SawyerPickPlace"
 
-# 
-
 python Run_Robosuite_PPO.py --run_name="HRL004" --hierarchical=1 --env="SawyerNutAssembly"
 
 python Run_Robosuite_PPO.py --run_name="HRL005" --hierarchical=1 --env="BaxterLift"
@@ -185,8 +183,57 @@ CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_102" --hierar
 CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="RL_101" --hierarchical=0 --env="SawyerLift"
 
 # 
-python Run_Robosuite_PPO.py --run_name="HRL_103" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --target_kl=0.03
+python Run_Robosuite_PPO.py --run_name="HRL_106" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=2.
 
-python Run_Robosuite_PPO.py --run_name="HRL_104" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --target_kl=0.04
+python Run_Robosuite_PPO.py --run_name="HRL_107" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=5.
 
-CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_105" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --target_kl=0.05
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_108" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=10.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_109" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+
+#################################################################
+
+# Debug
+python Run_Robosuite_PPO.py --run_name="HRL_debug" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+#
+# Run with.. hierachy, loading model
+python Run_Robosuite_PPO.py --run_name="HRL_201" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+python Run_Robosuite_PPO.py --run_name="HRL_202" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_203" --hierarchical=1 --env="SawyerPickPlaceBread" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_204" --hierarchical=1 --env="SawyerPickPlaceCan" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+python Run_Robosuite_PPO.py --run_name="HRL_205" --hierarchical=1 --env="SawyerPickPlaceCereal" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+python Run_Robosuite_PPO.py --run_name="HRL_206" --hierarchical=1 --env="SawyerPickPlaceMilk" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_207" --hierarchical=1 --env="SawyerNutAssemblyRound" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_208" --hierarchical=1 --env="SawyerNutAssemblySquare" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+# Run without hierarchy
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_301" --hierarchical=0 --env="SawyerLift" --data=Roboturk --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_302" --hierarchical=0 --env="SawyerStack" --data=Roboturk --action_scaling=1.
+
+# CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_303" --hierarchical=0 --env="SawyerPickPlaceBread" --data=Roboturk --action_scaling=1.
+
+# CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_304" --hierarchical=0 --env="SawyerPickPlaceCan" --data=Roboturk --action_scaling=1.
+
+# CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_305" --hierarchical=0 --env="SawyerPickPlaceCereal" --data=Roboturk --action_scaling=1.
+
+# CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_306" --hierarchical=0 --env="SawyerPickPlaceMilk" --data=Roboturk --action_scaling=1.
+
+# CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_307" --hierarchical=0 --env="SawyerNutAssemblyRound" --data=Roboturk --action_scaling=1.
+
+# CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_308" --hierarchical=0 --env="SawyerNutAssemblySquare" --data=Roboturk --action_scaling=1.
+
+
+# Run with hierarchy, no loading model
+python Run_Robosuite_PPO.py --run_name="HRL_211" --hierarchical=1 --env="SawyerLift" --data=Roboturk --action_scaling=1.
+
+python Run_Robosuite_PPO.py --run_name="HRL_212" --hierarchical=1 --env="SawyerStack" --data=Roboturk --action_scaling=1.
