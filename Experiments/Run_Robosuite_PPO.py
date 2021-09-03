@@ -48,6 +48,14 @@ if __name__ == '__main__':
     parser.add_argument('--action_scaling', dest='action_scaling', type=float, default=1.,                      help='How much to scale actions by.')
 
     ####################################################
+    # ARguments to evaluate translated zs. 
+    parser.add_argument('--evaluate_translated_zs', dest='evaluate_translated_zs', type=int, default=0, help='Whether to use translated zs to evaluate.')
+    parser.add_argument('--translated_z_file', dest='translated_z_file', type=str, default=None, help='File to load zs from.')
+    # parser.add_argument('--translated_z_file', dest='translated_z_file', type=str, default=None, help='File to load zs from.')
+
+    ####################################################
+
+    ####################################################
     # PPO arguments
     ####################################################
 
@@ -62,15 +70,20 @@ if __name__ == '__main__':
     # environment_names = ["SawyerLift", "SawyerStack", "BaxterLift", "BaxterPegInHole"]
     # environment_names = ["SawyerPickPlaceBread","SawyerPickPlaceCan","SawyerPickPlaceCereal","SawyerPickPlace","SawyerPickPlaceMilk","SawyerNutAssembly", "SawyerNutAssemblyRound","SawyerNutAssemblySquare"]
 
+    ####################################################
     # First make the robosuite environment. 
-    # if args.train:
-    base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
-    # else:
-    #     base_env = robosuite.make(args.env_name, has_renderer=True, use_camera_obs=False, reward_shaping=True)
+    ####################################################    
 
+    if args.env_name in ['Door','Wipe'] and float(robosuite.__version__[:3])>1.:        
+        # Specify that we're going to use the Sawyer here..
+        base_env = robosuite.make(args.env_name, robots="Sawyer", has_renderer=False, has_offscreen_renderer=False, use_camera_obs=False, reward_shaping=True)        
+    else:
+        base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
+    
     # Now make a GymWrapped version of that environment.
     gym_env = GymWrapper(base_env)
 
+    ####################################################
     # Create a log directory.
     # logdir = "/tmp/experiments/%i"%int(time.time())
     # logdir = "/tmp/experiments/{0}".format(args.env_name+"_"+args.run_name)

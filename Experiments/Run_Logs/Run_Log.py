@@ -237,3 +237,43 @@ CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_302" --hierar
 python Run_Robosuite_PPO.py --run_name="HRL_211" --hierarchical=1 --env="SawyerLift" --data=Roboturk --action_scaling=1.
 
 python Run_Robosuite_PPO.py --run_name="HRL_212" --hierarchical=1 --env="SawyerStack" --data=Roboturk --action_scaling=1.
+
+# Now running on Door and Wiping tasks
+# Run without hierarchy
+python Run_Robosuite_PPO.py --run_name="HRL_303" --hierarchical=0 --env="Door" --data=Roboturk
+
+python Run_Robosuite_PPO.py --run_name="HRL_304" --hierarchical=0 --env="Wipe" --data=Roboturk
+
+
+# Now running on Door and Wiping tasks
+# Run with.. hierachy, loading model
+python Run_Robosuite_PPO.py --run_name="HRL_221" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+python Run_Robosuite_PPO.py --run_name="HRL_222" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+
+# Evaluate various z's... 
+python Run_Robosuite_PPO.py --run_name="HRL_evalMIMEwipes" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+# 
+python Run_Robosuite_PPO.py --run_name="HRL_evalMIMEwipes2" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --evaluate_translated_zs=1 --translated_z_file="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/Wiping_Trajectories_TranslatedZs_RMIME_160to165.npy" --action_scaling=1.
+
+
+# Zero shot evaluation across different action scalings.
+python Run_Robosuite_PPO.py --run_name="HRL_evalMIMEwipes2" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --evaluate_translated_zs=1 --translated_z_file="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/Wiping_Trajectories_TranslatedZs_RMIME_160to165.npy" --action_scaling=1.
+
+# python Run_Robosuite_PPO.py --run_name="HRL_evalMIMEwipes2" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --evaluate_translated_zs=1 --translated_z_file="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/Wiping_Trajectories_TranslatedZs_RMIME_160to165.npy" --action_scaling=2.
+
+# python Run_Robosuite_PPO.py --run_name="HRL_evalMIMEwipes2" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --evaluate_translated_zs=1 --translated_z_file="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/Wiping_Trajectories_TranslatedZs_RMIME_160to165.npy" --action_scaling=5.
+
+# python Run_Robosuite_PPO.py --run_name="HRL_evalMIMEwipes2" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --evaluate_translated_zs=1 --translated_z_file="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/Wiping_Trajectories_TranslatedZs_RMIME_160to165.npy" --action_scaling=10.
+
+
+# Rerun HRL with new rollout timesteps on the 4 envs
+python Run_Robosuite_PPO.py --run_name="HRL_231" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+python Run_Robosuite_PPO.py --run_name="HRL_232" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_233" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_234" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
