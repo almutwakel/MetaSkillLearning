@@ -277,3 +277,140 @@ python Run_Robosuite_PPO.py --run_name="HRL_232" --hierarchical=1 --env="Wipe" -
 CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_233" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
 
 CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_234" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+# 
+# Rerun HRL with new rollout timesteps on the 4 envs
+python Run_Robosuite_PPO.py --run_name="HRL_241" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+python Run_Robosuite_PPO.py --run_name="HRL_242" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_243" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_244" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_trial" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1.
+
+
+# Run things with way more epochs
+# 
+# Rerun HRL with new rollout timesteps on the 4 envs
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_251" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_252" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_253" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_254" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+# # Rerun HRL with 4000 steps per epoch
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_261" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_262" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_263" --hierarchical=1 --env="SawyerLift" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_264" --hierarchical=1 --env="SawyerStack" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=1. --epochs=500
+
+# Debugging step size in Robosuite 1.2.1
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_271" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=2. --epochs=500
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_272" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=5. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_273" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=10. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_274" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=20. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_275" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=50. --epochs=500
+
+# # RUNNING WITH ACTION SCALING ON VERDI
+# CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_283" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=10. --epochs=500
+
+# CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_284" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=20. --epochs=500
+
+# CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_285" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=50. --epochs=500
+
+#Running on Wipe with increased step size.
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_281" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=2. --epochs=500
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_282" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=5. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_283" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=10. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_284" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=20. --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_285" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=50. --epochs=500
+
+# Dbug on verdi
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_debugverdi" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=2. --epochs=500
+
+# Run with increased clip
+#
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_291" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=2. --epochs=500  --target_kl=0.05
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_292" --hierarchical=1 --env="Wipe" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=5. --epochs=500 --target_kl=0.05
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_293" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=20. --epochs=500 --target_kl=0.05
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_294" --hierarchical=1 --env="Door" --data=Roboturk --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/RTP_051/saved_models/Model_epoch340" --action_scaling=50. --epochs=500 --target_kl=0.05
+
+
+##################################
+# Baxter Left Hand Lift
+python Run_Robosuite_PPO.py --run_name="HRL_baxtrial" --hierarchical=0 --env="BaxterLeftHandLift"
+
+python Run_Robosuite_PPO.py --run_name="HRL_baxtrial" --hierarchical=0 --env="BaxterRightHandLift"
+
+python Run_Robosuite_PPO.py --run_name="RL_baxstack_onehand_l" --hierarchical=0 --env="BaxterLeftHandStack"
+
+python Run_Robosuite_PPO.py --run_name="RL_baxstack_onehand_r" --hierarchical=0 --env="BaxterRightHandStack"
+
+#################################
+# Run Hierarchical PPO while loading Baxter model
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_Bax_001" --hierarchical=1 --env="BaxterLeftHandLift" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_Bax_002" --hierarchical=1 --env="BaxterRightHandLift" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_003" --hierarchical=1 --env="BaxterLeftHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_004" --hierarchical=1 --env="BaxterRightHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+# Rerun with diff init 
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_Bax_011" --hierarchical=1 --env="BaxterLeftHandLift" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_Bax_012" --hierarchical=1 --env="BaxterRightHandLift" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_013" --hierarchical=1 --env="BaxterLeftHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_014" --hierarchical=1 --env="BaxterRightHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+# Debug
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="DebugBax" --hierarchical=1 --env="BaxterLeftHandLift" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=1
+
+# Rerun flat with diff init
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="RL_Bax_001" --hierarchical=0 --env="BaxterLeftHandLift"
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="RL_Bax_002" --hierarchical=0 --env="BaxterRightHandLift"
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="RL_Bax_003" --hierarchical=0 --env="BaxterLeftHandStack"
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="RL_Bax_004" --hierarchical=0 --env="BaxterRightHandStack"
+
+# 
+# Rerun with diff init and fixed left right hands
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_Bax_021" --hierarchical=1 --env="BaxterLeftHandLift" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="HRL_Bax_022" --hierarchical=1 --env="BaxterRightHandLift" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_023" --hierarchical=1 --env="BaxterLeftHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_024" --hierarchical=1 --env="BaxterRightHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
+# Rerun with diff init and fixed left right hands
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="RL_Bax_021" --hierarchical=0 --env="BaxterLeftHandLift"
+
+CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="RL_Bax_022" --hierarchical=0 --env="BaxterRightHandLift"
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="RL_Bax_023" --hierarchical=0 --env="BaxterLeftHandStack"
+
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="RL_Bax_024" --hierarchical=0 --env="BaxterRightHandStack"

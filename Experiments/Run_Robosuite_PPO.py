@@ -81,6 +81,8 @@ if __name__ == '__main__':
 	else:
 		base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
 	
+	# print("Embed after constructing env")
+	# embed()
 	# Now make a GymWrapped version of that environment.
 	gym_env = GymWrapper(base_env)
 
