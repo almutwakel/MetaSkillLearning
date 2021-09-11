@@ -406,6 +406,9 @@ CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_023" --hi
 
 CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_024" --hierarchical=1 --env="BaxterRightHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
 
+# trial 
+CUDA_VISIBLE_DEVICES=1 python Run_Robosuite_PPO.py --run_name="HRL_Bax_trail" --hierarchical=1 --env="BaxterRightHandStack" --data=MIME --lowlevel_policy_model="/home/tshankar/Research/Code/CausalSkillLearning/Experiments/ExpWandbLogs/MJ_116/saved_models/Model_epoch500" --action_scaling=1.0 --epochs=500
+
 # Rerun with diff init and fixed left right hands
 CUDA_VISIBLE_DEVICES=0 python Run_Robosuite_PPO.py --run_name="RL_Bax_021" --hierarchical=0 --env="BaxterLeftHandLift"
 
