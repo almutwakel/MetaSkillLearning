@@ -25,7 +25,8 @@ if __name__ == '__main__':
 	"""
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--env', dest='env_name', type=str, default='SawyerLift',                   help='Specify the environment name of the Robosuite environment to run PPO On.')
+	parser.add_argument('--env', dest='env_name', type=str, default='Lift',                   		help='Specify the environment name of the Robosuite environment to run PPO On.')
+	parser.add_argument('--robots', dest='robots', type=str, default="Swayer", 						help='Robot to use in environment.')
 	parser.add_argument('--run_name', dest='run_name', type=str,                                    help='Set the name of the run.')
 	# parser.add_argument('--train', dest='train', default=True, action='store_true',                 help='Whether to train or evaluate.')
 	feature_parser = parser.add_mutually_exclusive_group(required=False)
@@ -52,6 +53,7 @@ if __name__ == '__main__':
 	# ARguments to evaluate translated zs. 
 	parser.add_argument('--evaluate_translated_zs', dest='evaluate_translated_zs', type=int, default=0, help='Whether to use translated zs to evaluate.')
 	parser.add_argument('--translated_z_file', dest='translated_z_file', type=str, default=None, help='File to load zs from.')
+
 	# parser.add_argument('--translated_z_file', dest='translated_z_file', type=str, default=None, help='File to load zs from.')
 
 	####################################################
@@ -74,12 +76,10 @@ if __name__ == '__main__':
 	####################################################
 	# First make the robosuite environment. 
 	####################################################    
+     
+	# Specify that we're going to use the Sawyer by default
+	base_env = robosuite.make(args.env_name, robots=args.robots, has_renderer=False, has_offscreen_renderer=False, use_camera_obs=False, reward_shaping=True)        
 
-	if args.env_name in ['Door','Wipe'] and float(robosuite.__version__[:3])>1.:        
-		# Specify that we're going to use the Sawyer here..
-		base_env = robosuite.make(args.env_name, robots="Sawyer", has_renderer=False, has_offscreen_renderer=False, use_camera_obs=False, reward_shaping=True)        
-	else:
-		base_env = robosuite.make(args.env_name, has_renderer=False, use_camera_obs=False, reward_shaping=True)
 	
 	# print("Embed after constructing env")
 	# embed()
